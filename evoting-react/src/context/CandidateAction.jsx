@@ -61,6 +61,29 @@ export const getSingleCandidate = async (id) => {
     }
 };
 
+export const getElectionCandidates = async (id) => {
+    try {
+        const response = await http.get(`/get-candidates/${id}`, {
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+
+        const data = response.data;
+
+        return {
+            candidates: data.candidates,
+            votedCandidate: data.votedCandidate,
+            success: true,
+        };
+    } catch (error) {
+        const errorMessage =
+            error.response?.data.message || "An unexpected error occurred.";
+
+        return { success: false, message: errorMessage };
+    }
+};
+
 export const updateCandidate = async (id, formData) => {
     try {
         //post because put technically doest not support file upload
@@ -92,5 +115,24 @@ export const deleteCandidate = async (id) => {
         return { message: data.message, id: id };
     } catch (error) {
         console.log(error);
+    }
+};
+
+export const voteCandidate = async (formData) => {
+    try {
+        const response = await http.post("/votes", formData, {
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+
+        const data = response.data;
+
+        return { success: true, message: data.message };
+    } catch (error) {
+        const errorMessage =
+            error.response?.data.message || "An unexpected error occurred.";
+
+        return { success: false, message: errorMessage };
     }
 };

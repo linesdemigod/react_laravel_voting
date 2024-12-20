@@ -16,10 +16,10 @@ class Vote extends Model
         'candidate_id',
     ];
 
-    public function users()
+    public function user()
     {
 
-        return $this->hasMany(User::class);
+        return $this->belongsTo(User::class);
     }
 
     public function elections()
@@ -28,9 +28,10 @@ class Vote extends Model
         return $this->hasMany(Election::class);
     }
 
-    public function candiates()
-    {
+    public function candidate
+    (
+    ) {
 
-        return $this->hasMany(Candidate::class);
+        return $this->belongsTo(Candidate::class);
     }
 }

@@ -11,6 +11,7 @@ export const CandidateProvider = ({ children }) => {
         success: false,
         candidates: [],
         candidate: {},
+        votedCandidate: {},
         loading: false,
     };
 

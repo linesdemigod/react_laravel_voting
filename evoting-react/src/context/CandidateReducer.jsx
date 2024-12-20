@@ -12,10 +12,23 @@ const candidateReducer = (state, action) => {
                 candidate: action.payload.candidate,
                 loading: false,
             };
+        case "SHOW_CANDIDATES":
+            return {
+                ...state,
+                candidates: action.payload.candidates,
+                votedCandidate: action.payload.votedCandidate,
+                loading: false,
+            };
         case "SHOW_CANDIDATE":
             return {
                 ...state,
                 candidate: action.payload.candidate,
+                loading: false,
+            };
+        case "VOTE_CANDIDATE":
+            return {
+                ...state,
+                message: action.payload.message,
                 loading: false,
             };
         case "UPDATE_CANDIDATE":

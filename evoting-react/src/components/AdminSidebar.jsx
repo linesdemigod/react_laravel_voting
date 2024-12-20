@@ -47,7 +47,7 @@ const AdminSidebar = () => {
                     </li>
                     <li className="mb-4">
                         <Link
-                            to="#"
+                            to="/admin/users"
                             className="flex items-center p-2 rounded-md hover:bg-gray-700"
                         >
                             <span className="ml-2">Users</span>
@@ -55,10 +55,10 @@ const AdminSidebar = () => {
                     </li>
                     <li className="mb-4">
                         <Link
-                            to="#"
+                            to="/admin/result"
                             className="flex items-center p-2 rounded-md hover:bg-gray-700"
                         >
-                            <span className="ml-2">Settings</span>
+                            <span className="ml-2">Result</span>
                         </Link>
                     </li>
                 </ul>

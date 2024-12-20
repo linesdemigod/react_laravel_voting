@@ -29,7 +29,7 @@ function UserNavbar() {
                     </Link>
                 </div>
                 <div className="hidden items-center justify-start gap-5 md:flex">
-                    <Link to="/voting" className="text-lg hover:text-gray-400">
+                    <Link to="/user" className="text-lg hover:text-gray-400">
                         Election
                     </Link>
 

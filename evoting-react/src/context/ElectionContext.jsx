@@ -11,6 +11,8 @@ export const ElectionProvider = ({ children }) => {
         success: false,
         elections: [],
         election: {},
+        candidateVotes: [],
+        voteCount: 0,
         loading: false,
     };
 

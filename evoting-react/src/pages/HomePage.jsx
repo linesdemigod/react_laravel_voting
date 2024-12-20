@@ -32,7 +32,7 @@ function HomePage() {
                 dispatch({ type: "LOGIN", payload: data });
                 const userData = data.user.is_admin;
 
-                userData === 0 ? navigate("/voting") : navigate("/admin");
+                userData === 0 ? navigate("/user") : navigate("/admin");
             } else {
                 toast.error(data.message);
             }

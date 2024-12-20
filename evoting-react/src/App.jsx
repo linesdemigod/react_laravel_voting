@@ -4,6 +4,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import UserLayout from "./components/UserLayout";
 import AdminLayout from "./components/AdminLayout";
+import { UserProvider } from "./context/UserContext";
 import { CandidateProvider } from "./context/CandidateContext";
 import { ElectionProvider } from "./context/ElectionContext";
 import { AuthProvider } from "./context/AuthContext";
@@ -16,6 +17,12 @@ import CreateElectionPage from "./pages/admin/CreateElectionPage";
 import EditElectionPage from "./pages/admin/EditElectionPage";
 import CreateCandidatePage from "./pages/admin/CreateCandidatePage";
 import EditCandidatePage from "./pages/admin/EditCandidatePage";
+import UserPage from "./pages/admin/UserPage";
+import CreateUserPage from "./pages/admin/CreateUserPage";
+import EditUserPage from "./pages/admin/EditUserPage";
+import ResultPage from "./pages/admin/ResultPage";
+import ElectionResultPage from "./pages/admin/ElectionResultPage";
+import VotePage from "./pages/VotePage";
 
 function App() {
     return (
@@ -23,61 +30,100 @@ function App() {
             <AuthProvider>
                 <ElectionProvider>
                     <CandidateProvider>
-                        <Router>
-                            <Routes>
-                                {/* Public Routes */}
-                                <Route index path="/" element={<HomePage />} />
-
-                                {/* Protected User Routes */}
-                                <Route element={<PrivateRoute role="0" />}>
+                        <UserProvider>
+                            <Router>
+                                <Routes>
+                                    {/* Public Routes */}
                                     <Route
-                                        path="/voting"
-                                        element={<UserLayout />}
-                                    >
-                                        <Route index element={<VotingPage />} />
-                                    </Route>
-                                </Route>
+                                        index
+                                        path="/"
+                                        element={<HomePage />}
+                                    />
 
-                                {/* Protected Admin Routes */}
-                                <Route element={<PrivateRoute role="1" />}>
-                                    <Route
-                                        path="/admin/*"
-                                        element={
-                                            <AdminLayout
-                                                element={<AdminLayout />}
+                                    {/* Protected User Routes */}
+                                    <Route element={<PrivateRoute role="0" />}>
+                                        <Route
+                                            path="/user"
+                                            element={<UserLayout />}
+                                        >
+                                            <Route
+                                                index
+                                                element={<VotingPage />}
                                             />
-                                        }
-                                    >
-                                        <Route index element={<AdminPage />} />
-                                        <Route
-                                            path="candidates"
-                                            element={<CandidatePage />}
-                                        />
-                                        <Route
-                                            path="elections"
-                                            element={<ElectionPage />}
-                                        />
-                                        <Route
-                                            path="create-election"
-                                            element={<CreateElectionPage />}
-                                        />
-                                        <Route
-                                            path="edit-election/:id"
-                                            element={<EditElectionPage />}
-                                        />
-                                        <Route
-                                            path="create-candidate"
-                                            element={<CreateCandidatePage />}
-                                        />
-                                        <Route
-                                            path="edit-candidate/:id"
-                                            element={<EditCandidatePage />}
-                                        />
+                                            <Route
+                                                path="election/:id"
+                                                element={<VotePage />}
+                                            />
+                                        </Route>
                                     </Route>
-                                </Route>
-                            </Routes>
-                        </Router>
-                        <ToastContainer />
+
+                                    {/* Protected Admin Routes */}
+                                    <Route element={<PrivateRoute role="1" />}>
+                                        <Route
+                                            path="/admin/*"
+                                            element={
+                                                <AdminLayout
+                                                    element={<AdminLayout />}
+                                                />
+                                            }
+                                        >
+                                            <Route
+                                                index
+                                                element={<AdminPage />}
+                                            />
+                                            <Route
+                                                path="candidates"
+                                                element={<CandidatePage />}
+                                            />
+                                            <Route
+                                                path="elections"
+                                                element={<ElectionPage />}
+                                            />
+                                            <Route
+                                                path="create-election"
+                                                element={<CreateElectionPage />}
+                                            />
+                                            <Route
+                                                path="edit-election/:id"
+                                                element={<EditElectionPage />}
+                                            />
+                                            <Route
+                                                path="create-candidate"
+                                                element={
+                                                    <CreateCandidatePage />
+                                                }
+                                            />
+                                            <Route
+                                                path="edit-candidate/:id"
+                                                element={<EditCandidatePage />}
+                                            />
+                                            {/* users route */}
+                                            <Route
+                                                path="users"
+                                                element={<UserPage />}
+                                            />
+                                            <Route
+                                                path="create-user"
+                                                element={<CreateUserPage />}
+                                            />
+                                            <Route
+                                                path="edit-user/:id"
+                                                element={<EditUserPage />}
+                                            />
+                                            <Route
+                                                path="result"
+                                                element={<ResultPage />}
+                                            />
+                                            <Route
+                                                path="result/:id"
+                                                element={<ElectionResultPage />}
+                                            />
+                                        </Route>
+                                    </Route>
+                                </Routes>
+                            </Router>
+                            <ToastContainer />
+                        </UserProvider>
                     </CandidateProvider>
                 </ElectionProvider>
             </AuthProvider>

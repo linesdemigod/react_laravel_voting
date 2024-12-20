@@ -95,3 +95,28 @@ export const deleteElection = async (id) => {
         console.log(error);
     }
 };
+
+//get alection result
+export const getElectionResult = async (id) => {
+    try {
+        const response = await http.get(`/result/${id}`, {
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+
+        const data = response.data;
+
+        return {
+            voteCount: data.voteCount,
+            candidateVotes: data.candidateVotes,
+            election: data.election,
+            success: true,
+        };
+    } catch (error) {
+        const errorMessage =
+            error.response?.data.message || "An unexpected error occurred.";
+
+        return { success: false, message: errorMessage };
+    }
+};

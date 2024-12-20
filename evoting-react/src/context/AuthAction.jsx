@@ -43,7 +43,6 @@ export const logout = async () => {
 
         return { success: true };
     } catch (error) {
-        console.log(error.request);
         return { success: false };
     }
 };

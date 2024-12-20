@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\VoteController;
 use App\Http\Controllers\ElectionController;
 use App\Http\Controllers\CandidateController;
 
@@ -31,6 +32,7 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/get-candidates', 'index');
         Route::post('/store-candidate', 'store');
         Route::get('/get-candidate/{candidate}', 'show');
+        Route::get('/get-candidates/{id}', 'electionCandidates');
         Route::post('/update-candidate/{candidate}', 'update');
         Route::delete('/delete-candidate/{candidate}', 'destroy');
 
@@ -43,6 +45,13 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/get-user/{user}', 'show');
         Route::put('/update-user/{user}', 'update');
         Route::delete('/delete-user/{user}', 'destroy');
+
+    });
+
+    Route::controller(VoteController::class)->group(function () {
+
+        Route::post('/votes', 'setVote');
+        Route::get('/result/{id}', 'result');
 
     });
 });

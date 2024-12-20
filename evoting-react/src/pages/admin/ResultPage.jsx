@@ -1,10 +1,11 @@
 import { useContext, useEffect } from "react";
-import Spinner from "../components/Spinner";
-import ElectionContext from "../context/ElectionContext";
-import { getElections } from "../context/ElectionAction";
-import Card from "../components/Card";
+import Spinner from "../../components/Spinner";
+import ElectionContext from "../../context/ElectionContext";
+import { getElections } from "../../context/ElectionAction";
+import Card from "../../components/Card";
+import ElectionCard from "../../components/ElectionCard";
 
-const VotingPage = () => {
+const ResultPage = () => {
     const { elections, loading, dispatch } = useContext(ElectionContext);
 
     useEffect(() => {
@@ -25,7 +26,7 @@ const VotingPage = () => {
             <div className="mt-10 container">
                 <div className="grid grid-cols-1 justify-between gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
                     {elections.map((election) => (
-                        <Card key={election.id} election={election} />
+                        <ElectionCard key={election.id} election={election} />
                     ))}
                 </div>
             </div>
@@ -33,4 +34,4 @@ const VotingPage = () => {
     );
 };
 
-export default VotingPage;
+export default ResultPage;

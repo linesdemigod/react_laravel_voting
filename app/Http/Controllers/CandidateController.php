@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Vote;
 use App\Models\Candidate;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rules\File;
@@ -30,6 +31,29 @@ class CandidateController extends Controller
             'candidate' => $candidate,
         ], 200);
     }
+
+    function electionCandidates($id)
+    {
+
+
+
+        $candidates = Candidate::with('election')
+            ->where('election_id', $id)
+            ->latest()
+            ->get();
+
+        //get the candidate the user has voted for this election if any
+        $voted = Vote::with('candidate')
+            ->where('election_id', $id)
+            ->where('user_id', auth()->id())
+            ->first();
+
+        return response()->json([
+            'candidates' => $candidates,
+            'votedCandidate' => $voted,
+        ], 200);
+    }
+
 
     function store(Request $request)
     {
