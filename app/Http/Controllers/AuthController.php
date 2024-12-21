@@ -17,12 +17,6 @@ class AuthController extends Controller
 
         $user = User::where('email', $formData['email'])->first();
 
-        if ($user && $user->status == 1) {
-            return response([
-                "message" => "You have already voted",
-            ], 401);
-        }
-
 
         // Attempt login
         if (!Auth::attempt($formData) || $user == null) {

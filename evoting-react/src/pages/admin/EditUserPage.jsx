@@ -226,8 +226,8 @@ function EditUserPage() {
                                 onChange={onChange}
                             >
                                 <option value="">Select Status</option>
-                                <option value="0">Not Voted</option>
-                                <option value="1">Voted</option>
+                                <option value="0">Active</option>
+                                <option value="1">Inactive</option>
                             </select>
                         </div>
 

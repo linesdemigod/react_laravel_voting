@@ -13,7 +13,7 @@ function UserItem({ user, handleDelete }) {
                 {user.is_admin === 0 ? "Voter" : "Admin"}
             </td>
             <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-base whitespace-nowrap p-4 text-left ">
-                {user.status === 1 ? "Voted" : "Not Voted"}
+                {user.status === 1 ? "Inactive" : "Active"}
             </td>
             <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-base whitespace-nowrap p-4 text-left ">
                 <div className="flex justify-between gap-3 items-center flex-row">

@@ -1,5 +1,4 @@
 import Echo from "laravel-echo";
-import Pusher from "pusher-js";
 import { useContext, useEffect } from "react";
 import Spinner from "../../components/Spinner";
 import ElectionContext from "../../context/ElectionContext";
@@ -25,7 +24,7 @@ function ElectionResultPage() {
 
     useEffect(() => {
         // Initialize Echo
-        // window.Pusher = Pusher;
+
         const echoInstance = new Echo({
             broadcaster: "reverb",
             key: import.meta.env.VITE_REVERB_APP_KEY,
