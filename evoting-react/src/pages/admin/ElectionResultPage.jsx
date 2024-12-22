@@ -1,4 +1,4 @@
-import Echo from "laravel-echo";
+import { echoInstance } from "../../context/Reverb";
 import { useContext, useEffect } from "react";
 import Spinner from "../../components/Spinner";
 import ElectionContext from "../../context/ElectionContext";
@@ -23,28 +23,10 @@ function ElectionResultPage() {
     const resultChannel = `result.${election.id}`;
 
     useEffect(() => {
-        // Initialize Echo
-
-        const echoInstance = new Echo({
-            broadcaster: "reverb",
-            key: import.meta.env.VITE_REVERB_APP_KEY,
-            wsHost: import.meta.env.VITE_REVERB_HOST,
-            wsPort: import.meta.env.VITE_REVERB_PORT ?? 80,
-            wssPort: import.meta.env.VITE_REVERB_PORT ?? 443,
-            forceTLS:
-                (import.meta.env.VITE_REVERB_SCHEME ?? "https") === "https",
-            enabledTransports: ["ws", "wss"],
-            auth: {
-                headers: {
-                    Authorization: `Bearer ${localStorage.getItem("token")}`,
-                },
-            },
-        });
-
         const channel = echoInstance.channel(resultChannel);
         channel.listen("Voting", (event) => {
             const updatedVote = event.vote;
-            console.log(event);
+
             dispatch({ type: "ELECTION_RESULT", payload: updatedVote });
             // dispatch({
             //     type: "UPDATE_ELECTION_RESULT",

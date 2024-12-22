@@ -15,9 +15,7 @@ const CandidateItem = ({ candidate, handleDelete }) => {
                 <div className="w-fit">
                     <h1 className="text-black font-bold">{candidate.name}</h1>
                     <p className="text-gray-500 text-sm">
-                        {candidate.party && candidate.party.name
-                            ? candidate.party.name
-                            : "N/A"}
+                        {candidate.party ? candidate.party : "N/A"}
                     </p>
                     <a className="text-base text-gray-700 mb-2">
                         {candidate.election && candidate.election.name

@@ -18,7 +18,7 @@ function CreateCandidatePage() {
 
     const [formData, setFormData] = useState({
         name: "",
-        party_id: "",
+        party: "",
         election_id: "",
         profile: {},
     });
@@ -32,7 +32,7 @@ function CreateCandidatePage() {
         fetchElections();
     }, [electionDispatch]);
 
-    const { name, party_id, election_id, profile } = formData;
+    const { name, party, election_id, profile } = formData;
 
     const onChange = async (e) => {
         if (e.target.id === "profile" && e.target.files.length > 0) {
@@ -62,7 +62,7 @@ function CreateCandidatePage() {
                 //clear form
                 setFormData({
                     name: "",
-                    party_id: "",
+                    party: "",
                     election_id: "",
                     profile: "",
                 });
@@ -109,17 +109,17 @@ function CreateCandidatePage() {
                         </div>
                         <div className="mb-4">
                             <label
-                                htmlFor="party_id"
+                                htmlFor="party"
                                 className="mb-2 block text-sm font-medium text-gray-700"
                             >
                                 Party
                             </label>
                             <input
                                 type="text"
-                                name="party_id"
-                                id="party_id"
+                                name="party"
+                                id="party"
                                 className="focus:border-indigo-500 focus:ring-indigo-500 w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:outline-none"
-                                value={party_id}
+                                value={party}
                                 onChange={onChange}
                             />
                         </div>

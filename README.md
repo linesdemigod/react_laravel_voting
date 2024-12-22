@@ -44,6 +44,10 @@ php artisan storage:link
 php artisan serve
 ```
 
+```
+php artisan reverb:start
+```
+
 ## React Part
 
 Rename **_.env.example_** to **_.env_**

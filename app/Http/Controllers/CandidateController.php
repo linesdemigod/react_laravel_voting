@@ -14,7 +14,7 @@ class CandidateController extends Controller
     function index()
     {
 
-        $candidates = Candidate::with('election', 'party')
+        $candidates = Candidate::with('election')
             ->latest()
             ->get();
 
