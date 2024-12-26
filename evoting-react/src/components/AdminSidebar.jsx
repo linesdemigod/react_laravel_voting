@@ -15,7 +15,7 @@ const AdminSidebar = () => {
         }
     };
     return (
-        <aside className="w-64 bg-gray-800 text-white flex flex-col">
+        <aside className="w-64 bg-gray-800 text-white fixed h-full overflow-auto flex flex-col">
             <div className="p-4 text-lg font-bold border-b border-gray-700">
                 Admin Dashboard
             </div>

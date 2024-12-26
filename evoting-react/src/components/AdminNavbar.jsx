@@ -5,9 +5,9 @@ function AdminNavbar() {
     return (
         <>
             {/* Top Navbar */}
-            <header className="bg-white shadow-sm px-4 py-2 flex justify-between items-center">
+            <header className="bg-white shadow-sm px-4 py-2 flex justify-between items-center fixed w-full top-0 z-10 overflow-hidden">
                 <h1 className="text-lg font-semibold">Welcome, Admin</h1>
-                <div className="flex items-center space-x-4">
+                {/* <div className="flex items-center space-x-4 overflow-hidden">
                     <input
                         type="text"
                         placeholder="Search..."
@@ -16,7 +16,7 @@ function AdminNavbar() {
                     <button className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md">
                         Profile
                     </button>
-                </div>
+                </div> */}
             </header>
         </>
     );
